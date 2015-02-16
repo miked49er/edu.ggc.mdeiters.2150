@@ -1,3 +1,5 @@
+package edu.ggc.mdeiters.HomeWork1;
+
 /**
  * Plan
  * @author Mike Deiters

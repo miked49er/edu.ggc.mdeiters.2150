@@ -1,4 +1,4 @@
-package IC3;
+package edu.ggc.mdeiters.IC3;
 
 
 /** Class: FileMissingException

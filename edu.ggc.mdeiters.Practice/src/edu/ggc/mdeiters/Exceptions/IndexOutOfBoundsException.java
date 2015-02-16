@@ -1,4 +1,4 @@
-package Exceptions;
+package edu.ggc.mdeiters.Exceptions;
 
 
 /** Class: IndexOutOfBoundsException

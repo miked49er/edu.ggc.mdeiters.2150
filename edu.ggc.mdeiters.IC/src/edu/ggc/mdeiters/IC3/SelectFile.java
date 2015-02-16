@@ -1,5 +1,5 @@
 
-package IC3;
+package edu.ggc.mdeiters.IC3;
 
 import java.io.File;
 import java.util.ArrayList;

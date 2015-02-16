@@ -1,4 +1,5 @@
-package Exceptions;
+
+package edu.ggc.mdeiters.Exceptions;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

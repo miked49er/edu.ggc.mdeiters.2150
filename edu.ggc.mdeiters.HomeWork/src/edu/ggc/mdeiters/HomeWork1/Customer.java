@@ -1,3 +1,5 @@
+package edu.ggc.mdeiters.HomeWork1;
+
 /**
  * Customer
  * @author Mike Deiters

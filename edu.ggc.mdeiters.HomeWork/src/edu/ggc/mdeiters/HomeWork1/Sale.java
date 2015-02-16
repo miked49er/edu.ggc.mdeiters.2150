@@ -1,3 +1,6 @@
+
+package edu.ggc.mdeiters.HomeWork1;
+
 /**
  * Sale
  * @author Mike Deiters
@@ -57,14 +60,14 @@ public class Sale {
 
 		return newCustomer;
 	}
-	
-    /**
-     * @param newCustomer the newCustomer to set
-     */
-    public void setNewCustomer(boolean newCustomer) {
-    
-    	this.newCustomer = newCustomer;
-    }
+
+	/**
+	 * @param newCustomer the newCustomer to set
+	 */
+	public void setNewCustomer(boolean newCustomer) {
+
+		this.newCustomer = newCustomer;
+	}
 
 	/**
 	 * @return the SALES_TAX as a percentage
@@ -81,14 +84,14 @@ public class Sale {
 
 		return phonePrice.getPhonePrice();
 	}
-	
-    /**
-     * @param phonePrice the phonePrice to set
-     */
-    public void setPhonePrice(Phone phonePrice) {
-    
-    	this.phonePrice = phonePrice;
-    }
+
+	/**
+	 * @param phonePrice the phonePrice to set
+	 */
+	public void setPhonePrice(Phone phonePrice) {
+
+		this.phonePrice = phonePrice;
+	}
 
 	/**
 	 * @return the planPrice
@@ -97,14 +100,14 @@ public class Sale {
 
 		return planPrice.getPlanPrice();
 	}
-	
-    /**
-     * @param planPrice the planPrice to set
-     */
-    public void setPlanPrice(Plan planPrice) {
-    
-    	this.planPrice = planPrice;
-    }
+
+	/**
+	 * @param planPrice the planPrice to set
+	 */
+	public void setPlanPrice(Plan planPrice) {
+
+		this.planPrice = planPrice;
+	}
 
 	/**
 	 * tender

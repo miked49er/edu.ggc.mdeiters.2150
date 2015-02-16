@@ -1,5 +1,5 @@
 
-package Exceptions;
+package edu.ggc.mdeiters.Exceptions;
 
 import java.io.File;
 import java.io.FileNotFoundException;

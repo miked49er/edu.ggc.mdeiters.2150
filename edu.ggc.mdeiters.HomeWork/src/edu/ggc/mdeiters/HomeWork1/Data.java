@@ -1,4 +1,5 @@
 
+package edu.ggc.mdeiters.HomeWork1;
 
 /** Class: Data
  * @author Mike Deiters
@@ -23,19 +24,19 @@ public class Data {
 	protected Phone htc510 = new Phone("HTC Desire 510", 149.99, 10);
 	protected Phone nokia635 = new Phone("Nokia Lumia 635", 99.99, 6);
 	protected Phone nokia1320 = new Phone("Nokia Lumia 1320", 279.99, 4);
-	
+
 	protected Phone[] phones = { gs5, gs4, iPhone6, iPhone5s, motoG, htc510, nokia635, nokia1320 };
-	
+
 	protected Plan basic = new Plan("Basic", 40, "Unlimited Talk\nUnlimited Text\nUnlimited Data\n1 GB of High Speed Data\n");
 	protected Plan smart = new Plan("Smart", 50, "Unlimited Talk\nUnlimited Text\nUnlimited Data\n3 GB of High Speed Data\n");
 	protected Plan pro = new Plan("Pro", 60, "Unlimited Talk\nUnlimited Text\nUnlimited Data\n10 GB of High Speed Data\n");
-	
+
 	protected Plan[] plans = { basic, smart, pro };
-	
+
 	protected Employee joe = new Employee("Joe Smith");
 	protected Employee steve = new Employee("Steve the Player");
 	protected Employee mike = new Employee("Mike Bell");
-	
+
 	protected Employee[] employees = { joe, steve, mike };
-	
+
 }

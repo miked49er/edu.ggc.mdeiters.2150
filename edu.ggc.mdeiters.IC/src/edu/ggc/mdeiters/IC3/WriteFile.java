@@ -1,4 +1,4 @@
-package IC3;
+package edu.ggc.mdeiters.IC3;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

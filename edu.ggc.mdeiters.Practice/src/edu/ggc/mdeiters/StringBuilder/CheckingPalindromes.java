@@ -1,4 +1,4 @@
-package stringBuilder;
+package edu.ggc.mdeiters.StringBuilder;
 import java.util.Scanner;
 
 /** CheckingPalindromes

@@ -1,4 +1,4 @@
-package IC1;
+package edu.ggc.mdeiters.IC1;
 import java.util.ArrayList;
 
 /**

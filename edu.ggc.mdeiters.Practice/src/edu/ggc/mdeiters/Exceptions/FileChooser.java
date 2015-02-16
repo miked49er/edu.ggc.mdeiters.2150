@@ -1,4 +1,5 @@
-package Exceptions;
+
+package edu.ggc.mdeiters.Exceptions;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,7 +8,6 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
-
 
 /** Class: FileChooser
  * @author Mike Deiters
@@ -23,26 +23,25 @@ import javax.swing.JFileChooser;
  */
 public class FileChooser {
 
-	public static void main(String[] args) throws FileNotFoundException{
+	public static void main(String[] args) throws FileNotFoundException {
 
 		JFileChooser chooser = new JFileChooser();
 		File selectedFile = null;
 		if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 			selectedFile = chooser.getSelectedFile();
 		}
-		
+
 		FileReader in = new FileReader(selectedFile);
-		
+
 		Scanner reader = new Scanner(in);
 		File writeFile = null;
 		if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 			writeFile = chooser.getSelectedFile();
 		}
-		
+
 		PrintWriter pw = new PrintWriter(writeFile);
-		
-		
-		while(reader.hasNext()) {
+
+		while (reader.hasNext()) {
 			pw.println(reader.nextLine());
 		}
 		reader.close();
