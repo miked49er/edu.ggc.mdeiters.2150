@@ -29,12 +29,19 @@ public class Card {
 	private final int QUEEN = 12;
 	private final int KING = 13;
 
-	private final int suit; // Int that is between 0 and 3 to decide the suit of the card
-	private final int value; // Int that is between 1 and 13 to decide the value of the card
+	private int suit; // Int that is between 0 and 3 to decide the suit of the card
+	private int value; // Int that is between 1 and 13 to decide the value of the card
+
+	public Card() {
+
+	}
 
 	/**
+	 * Constructor
+	 * This will create the cards
 	 * @param suit
 	 * @param value
+	 * @throws InvalidCardException if the suit int is not between 0 and 3 or if the value int is not between 1 and 13
 	 */
 	public Card(int suit, int value) throws InvalidCardException {
 
