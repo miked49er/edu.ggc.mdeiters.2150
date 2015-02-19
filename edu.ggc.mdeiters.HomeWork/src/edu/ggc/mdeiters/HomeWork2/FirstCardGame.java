@@ -78,9 +78,14 @@ public class FirstCardGame {
 		System.out.println("\n\n\nHere is the shuffled deck\n-----------------------------------");
 		fcg.printDeckArray(deck.printDeck());
 
+		// Deal and print the top card of the deck
+		
+		String foo = deck.deal().toString();
+		System.out.println("\n\n\nThe top card on the deck is: " + foo);
+		
 		// Read input from the user to select a number between 1 and 52 to pick a card
 		
-		System.out.println("\n\n\nPlease select a number between 1 and 52");
+		System.out.println("\n\nPlease select a number between 1 and 52");
 
 		do {
 
