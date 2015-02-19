@@ -11,9 +11,9 @@ import java.util.Scanner;
  * Written: Feb 18, 2015
  * 
  * 
- * This will 
+ * This will create a deck and print it to the console, shuffle the deck, and let the user select a card
  * 
- * Purpose is 
+ * Purpose is to create a card game
  * 
  */
 public class FirstCardGame {
@@ -27,11 +27,14 @@ public class FirstCardGame {
 
 		for (int i = 0; i < cards.length; i++) {
 
-			if (i == 12 || i == 25 || i == 38) {
+			if (i == 12 || i == 25 || i == 38) { // Insert a line break every 13 cards
+				
 				System.out.print(cards[i].toString() + ",\n");
-			} else if (i == cards.length - 1) {
+			} else if (i == cards.length - 1) { // No comma after the last card
+				
 				System.out.print(cards[i].toString());
-			} else {
+			} else { // Normal card then comma
+				
 				System.out.print(cards[i].toString() + ", ");
 			}
 		}
@@ -45,44 +48,54 @@ public class FirstCardGame {
 		Scanner input = new Scanner(System.in);
 		int selectedCard = 0;
 
-		try {
+		try { // Try to create a new deck
+			
 			deck = new CardDeck();
-		} catch (InvalidCardException ice) {
+		} catch (InvalidCardException ice) { // If InvalidCardException is thrown print the message of the exception
+			
 			System.out.println(ice.getMessage());
 		}
 
+		// Print the un-shuffled deck
+		
 		System.out.println("Here is the deck unshuffled\n-----------------------------------");
 		fcg.printDeckArray(deck.printDeck());
 
 		do {
 
-			if (deck.shuffle()) {
+			if (deck.shuffle()) { // If shuffle is successful then the notDone is false
 
 				notDone = false;
 
-			} else {
+			} else { // If shuffle is not successful then notDone is true and the process loops until shuffle is successful
 
 				notDone = true;
 			}
 		} while (notDone);
 
+		// Print the shuffled deck
+		
 		System.out.println("\n\n\nHere is the shuffled deck\n-----------------------------------");
 		fcg.printDeckArray(deck.printDeck());
 
+		// Read input from the user to select a number between 1 and 52 to pick a card
+		
 		System.out.println("\n\n\nPlease select a number between 1 and 52");
 
 		do {
 
-			try {
+			try { // Try to take in the input
 
 				selectedCard = input.nextInt();
 
-			} catch (InputMismatchException ime) {
+			} catch (InputMismatchException ime) { // If something other than an int is entered catch the InputMismatchException and loop to try again
 
 				System.out.println(ime.getMessage() + "\nPlease select a number between 1 and 52");
 			}
 		} while (notDone);
 
+		// Show the selected card
+		
 		System.out.println("\nThe selected card is the: " + deck.selectCard(selectedCard).toString());
 	}
 }
