@@ -17,10 +17,10 @@ public class Card {
 
 	// Default values for the suits
 
-	private final int SPADE = 0;
-	private final int HEART = 1;
-	private final int CLUB = 2;
-	private final int DIAMOND = 3;
+	private final int SPADES = 0;
+	private final int HEARTS = 1;
+	private final int DIAMONDS = 2;
+	private final int CLUBS = 3;
 
 	// Default values for the face cards
 
@@ -89,14 +89,14 @@ public class Card {
 	public String getSuitAsString() {
 
 		switch (this.suit) {
-			case SPADE:
-				return "Spade";
-			case HEART:
-				return "Heart";
-			case DIAMOND:
-				return "Diamond";
-			case CLUB:
-				return "Club";
+			case SPADES:
+				return "Spades";
+			case HEARTS:
+				return "Hearts";
+			case DIAMONDS:
+				return "Diamonds";
+			case CLUBS:
+				return "Clubs";
 			default:
 				return "??";
 		}

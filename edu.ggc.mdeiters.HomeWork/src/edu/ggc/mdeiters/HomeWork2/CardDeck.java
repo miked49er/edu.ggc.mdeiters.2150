@@ -34,6 +34,7 @@ public class CardDeck extends Card {
 			for (int i = 0; i <= 3; i++) {
 
 				for (int j = 1; j <= 13; j++) {
+					
 					deck.add(new Card(i, j));
 				}
 			}
@@ -91,7 +92,7 @@ public class CardDeck extends Card {
 
 		if (cardNumber >= 1 && cardNumber <= 52) { // Return the card selected if cardNumber is between 1 and 52
 
-			return deck.get(cardNumber + 1);
+			return deck.get(cardNumber - 1);
 
 		} else { // Return the last card if cardNumber is greater than 52
 
