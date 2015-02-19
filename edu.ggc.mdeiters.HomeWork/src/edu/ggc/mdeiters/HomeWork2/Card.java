@@ -98,7 +98,7 @@ public class Card {
 			case CLUBS:
 				return "Clubs";
 			default:
-				return "??";
+				return "?*";
 		}
 	}
 
