@@ -1,5 +1,5 @@
-package edu.ggc.mdeiters.IC4;
 
+package edu.ggc.mdeiters.IC4;
 
 /** Class: HourlyEmployee
  * @author Mike Deiters
@@ -8,16 +8,16 @@ package edu.ggc.mdeiters.IC4;
  * Written: Feb 22, 2015
  * 
  * 
- * This will 
+ * This will create a framework for hourly employees
  * 
- * Purpose is 
+ * Purpose is create a hourly employee and calculate their salary
  * 
  */
 public class HourlyEmployee extends Employee {
 
 	private double hourlyRate;
 	private double numHours;
-	
+
 	public HourlyEmployee() {
 
 		super();
@@ -34,29 +34,27 @@ public class HourlyEmployee extends Employee {
 		super(name);
 		this.hourlyRate = hourlyRate;
 		this.numHours = numHours;
+		calculateSalary();
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	/**
+	 * Method: calculateSalary
+	 * This will calculate the HourlyEmployee's weekly salary as hourlyRate * numHours
+	 * @return the HourlyEmployee's salary
 	 */
-	@Override
-	public int compareTo(Double o) {
-
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.ggc.mdeiters.IC4.Employee#calculateSalary()
-	 */
-	@Override
 	public double calculateSalary() {
 
-		setSalary(hourlyRate * numHours); 
+		setSalary(hourlyRate * numHours);
 		return getSalary();
 	}
-	
+
+	/**
+	 * Method toString
+	 * @return the HourlyEmployee as a string
+	 */
 	public String toString() {
-		return toString() + "\nHourly Rate: " + hourlyRate + "\nNumber of hours worked: " + numHours;
+
+		return super.toString() + " is an Hourly Employee with a Weekly Salary of $" + round(getSalary()) + "\nWorks " + numHours + " for $" + round(hourlyRate) + "/hr";
 	}
 
 }
