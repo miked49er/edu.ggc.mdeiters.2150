@@ -54,7 +54,8 @@ public class HourlyEmployee extends Employee {
 	 */
 	public String toString() {
 
-		return super.toString() + " is an Hourly Employee with a Weekly Salary of $" + round(getSalary()) + "\nWorks " + numHours + " for $" + round(hourlyRate) + "/hr";
+		return super.toString() + " is an Hourly Employee with a Weekly Salary of $" + round(getSalary()) + "\nWorks " + numHours + " for $"
+		        + round(hourlyRate) + "/hr";
 	}
 
 }

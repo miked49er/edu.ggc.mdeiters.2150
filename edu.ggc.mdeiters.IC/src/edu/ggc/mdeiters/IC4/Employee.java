@@ -96,17 +96,7 @@ public abstract class Employee implements Comparable<Employee> {
 	 */
 	public int compareTo(Employee salary) {
 
-		final int BEFORE = -1;
-		final int EQUAL = 0;
-		final int AFTER = 1;
-		
-		if (this.salary > salary.getSalary()) {
-			return BEFORE;
-		} else if (this.salary < salary.getSalary()) {
-			return AFTER;
-		} else {
-			return EQUAL;
-		}
+		return (int) (this.salary - salary.getSalary());
 	}
 
 	/**
