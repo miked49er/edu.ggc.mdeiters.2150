@@ -15,6 +15,10 @@ package edu.ggc.mdeiters.HomeWork2;
  */
 public class InvalidCardException extends Exception {
 
+	public InvalidCardException() {
+		
+	}
+	
 	/**
 	 * @param message
 	 */

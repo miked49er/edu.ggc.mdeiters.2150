@@ -25,17 +25,17 @@ public class FirstCardGame {
 	 */
 	public void printDeckArray(Card[] cards) {
 
-		for (int i = 0; i < cards.length; i++) {
+		for (int i = 1; i <= cards.length; i++) {
 
-			if (i == 12 || i == 25 || i == 38) { // Insert a line break every 13 cards
+			if (i % 13 == 0) { // Insert a line break every 13 cards
 				
-				System.out.print(cards[i].toString() + ",\n");
-			} else if (i == cards.length - 1) { // No comma after the last card
+				System.out.print(cards[i - 1].toString() + ",\n");
+			} else if (i == cards.length) { // No comma after the last card
 				
-				System.out.print(cards[i].toString());
+				System.out.print(cards[i - 1].toString());
 			} else { // Normal card then comma
 				
-				System.out.print(cards[i].toString() + ", ");
+				System.out.print(cards[i - 1].toString() + ", ");
 			}
 		}
 	}
@@ -78,6 +78,8 @@ public class FirstCardGame {
 		System.out.println("\n\n\nHere is the shuffled deck\n-----------------------------------");
 		fcg.printDeckArray(deck.printDeck());
 
+		try {
+		
 		// Deal and print the top card of the deck
 		
 		String foo = deck.deal().toString();
@@ -102,5 +104,10 @@ public class FirstCardGame {
 		// Show the selected card
 		
 		System.out.println("\nThe selected card is the: " + deck.selectCard(selectedCard).toString());
+
+		} catch (InvalidCardException ice) {
+			
+			System.out.println(ice.getMessage());
+		}
 	}
 }

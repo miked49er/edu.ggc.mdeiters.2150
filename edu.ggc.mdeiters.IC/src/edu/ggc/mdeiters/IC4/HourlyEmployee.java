@@ -21,6 +21,8 @@ public class HourlyEmployee extends Employee {
 	public HourlyEmployee() {
 
 		super();
+		this.hourlyRate = 0;
+		this.numHours = 0;
 	}
 
 	/**

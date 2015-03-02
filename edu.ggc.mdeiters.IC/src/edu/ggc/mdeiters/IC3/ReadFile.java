@@ -33,13 +33,13 @@ public class ReadFile {
 	}
 
 	/**
-	 * Method: readFile
+	 * Method: readToArrayList
 	 * This will read the file selected to an ArrayList
 	 * @param selectedFile file to be read
 	 * @return An ArrayList of Strings from a file
 	 * @throws FileMissingException
 	 */
-	public ArrayList<String> readFile(File selectedFile) throws FileMissingException {
+	public ArrayList<String> readToArrayList(File selectedFile) throws FileMissingException {
 
 		try {
 
@@ -67,35 +67,24 @@ public class ReadFile {
 
 	/**
 	 * Method: readFile
-	 * This will read the file selected to an ArrayList
-	 * @param selectedFile String to the file directory
-	 * @return An ArrayList of Strings from a file
-	 * @throws FileMissingException
+	 * @param file that the user wants to read
+	 * @return ArrayList of the Strings from the file
 	 */
-	public ArrayList<String> readFile(String selectedFile) throws FileMissingException {
+	public ArrayList<String> readFile(File file) {
 
-		try {
+		return readToArrayList(file);
+	}
 
-			// Setting the String of the file directory to the FileReader
+	/**
+	 * Method: readFile
+	 * This will take the String location of the file to read and create newFile to pass into the readToArrayList method
+	 * @param string of the file location
+	 * @return the ArrayList of the Strings from then file
+	 */
+	public ArrayList<String> readFile(String file) {
 
-			inFile = new FileReader(selectedFile);
-
-			// Creating a Scanner to read the FileReader
-
-			Scanner input = new Scanner(inFile);
-
-			while (input.hasNext()) { // Adds each line of the file to the ArrayList fileList
-
-				fileList.add(input.nextLine());
-			}
-
-			inFile.close();
-		} catch (FileNotFoundException fnf) {
-			throw new FileMissingException("I can't find the file you want to read.");
-		} catch (IOException ioe) {
-
-		}
-		return fileList;
+		File newFile = new File(file);
+		return readToArrayList(newFile);
 	}
 
 	/**

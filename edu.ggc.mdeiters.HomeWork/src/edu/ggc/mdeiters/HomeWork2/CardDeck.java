@@ -16,7 +16,7 @@ import java.util.Collections;
  * Purpose is to create a deck of cards
  * 
  */
-public class CardDeck extends Card {
+public class CardDeck {
 
 	private ArrayList<Card> deck = new ArrayList<Card>();
 	private Card dealedCard;
@@ -29,18 +29,14 @@ public class CardDeck extends Card {
 	 */
 	public CardDeck() throws InvalidCardException {
 
-		super();
-		try {
-			for (int i = 0; i <= 3; i++) {
+		for (int i = 0; i <= 3; i++) {
 
-				for (int j = 1; j <= 13; j++) {
-					
-					deck.add(new Card(i, j));
-				}
+			for (int j = 1; j <= 13; j++) {
+
+				deck.add(new Card(i, j));
 			}
-		} catch (InvalidCardException ice) {
-			throw ice;
 		}
+
 	}
 
 	/**
@@ -73,11 +69,17 @@ public class CardDeck extends Card {
 	 * This will deal the first card in the deck
 	 * @return the top card on the deck
 	 */
-	public Card deal() {
+	public Card deal() throws InvalidCardException{
 
-		// Assigns the top card to dealedCard
+		if (!deck.isEmpty()) {
+		
+			// Assigns the top card to dealedCard
 
-		dealedCard = deck.get(0);
+			dealedCard = deck.get(0);
+		} else {
+			
+			throw new InvalidCardException("No cards found in deck");
+		}
 
 		return dealedCard;
 	}
@@ -90,7 +92,7 @@ public class CardDeck extends Card {
 	 */
 	public Card selectCard(int cardNumber) {
 
-		if (cardNumber >= 1 && cardNumber <= 52) { // Return the card selected if cardNumber is between 1 and 52
+		if (cardNumber >= 1 && cardNumber <= deck.size()) { // Return the card selected if cardNumber is between 1 and 52
 
 			return deck.get(cardNumber - 1);
 

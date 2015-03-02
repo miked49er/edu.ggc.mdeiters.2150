@@ -2,6 +2,7 @@
 package edu.ggc.mdeiters.IC3;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
@@ -38,7 +39,7 @@ public class SelectFile {
 			selected = chooser.getSelectedFile();
 		} else {
 
-			System.exit(0);
+			throw new FileMissingException("No file selected");
 		}
 
 		return selected;
@@ -61,7 +62,7 @@ public class SelectFile {
 			selected = chooser.getSelectedFile();
 		} else {
 
-			System.exit(0);
+			throw new FileMissingException("Save location not selected");
 		}
 
 		return selected;

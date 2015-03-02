@@ -15,9 +15,6 @@ package edu.ggc.mdeiters.IC3;
  */
 public class FileMissingException extends RuntimeException {
 
-	/**
-	 * 
-	 */
 	public FileMissingException() {
 
 		super();
