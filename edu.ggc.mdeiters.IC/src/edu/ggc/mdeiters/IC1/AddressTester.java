@@ -69,10 +69,14 @@ public class AddressTester {
 	 */
 	private void printAddresses(AddressBook $ad) {
 		String $addresses = "";
+		
 		for (int i = 0; i < $ad.getAllAddress().length; i++) {
 			$addresses += $ad.getAllAddress()[i] + "\n\n";
 		}
+		
 		JOptionPane.showMessageDialog(null, $addresses);
+		
+		
 	}
 
 }
