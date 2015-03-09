@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 /**
  * Class: Calculator
  * @author Mike Deiters
- * @version 1.0
+ * @version 1.1
  * ITEC 2150 Spring 2015
  * Written: Mar 7, 2015
  * 
@@ -535,9 +535,10 @@ public class Calculator extends Application {
 	/**
 	 * Method: main 
 	 * @param args
+	 * @throws Exception
 	 * Method Description: Launches the program for JavaFX
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		Application.launch(args);
 	}
