@@ -1,13 +1,14 @@
 
 package edu.ggc.mdeiters.IC6;
 
-import java.io.FileNotFoundException;
-
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -47,11 +48,13 @@ public class PicViewerUI extends Application {
 	private ImageView srcView;
 	private String img;
 	private Image src;
-	private Image srcEdit;
+	private Image srcTemp;
+	private Image srcCur;
 	private Button okBtn;
 	private Button exitBtn;
 	private Button origBtn;
 	private Button editBtn;
+	private Button undoBtn;
 	private PicEditor edit;
 
 	/**
@@ -59,7 +62,7 @@ public class PicViewerUI extends Application {
 	 * @return String the URI of the image file
 	 * Method Description: Allow the user to select an image file
 	 */
-	public String getFile() throws RuntimeException{
+	public String getFile() throws RuntimeException {
 
 		FileChooser chooser = new FileChooser();
 		return chooser.showOpenDialog(mainStage).toURI().toString();
@@ -98,10 +101,9 @@ public class PicViewerUI extends Application {
 						mainStage.setMinHeight(src.getHeight() + controls.getHeight() + btn.getHeight() + 30);
 						mainStage.setMinWidth(src.getWidth());
 
-						// Enable combo, input, origBtn
+						// Enable combo, origBtn
 
 						combo.setDisable(false);
-						input.setDisable(false);
 						origBtn.setDisable(false);
 
 						// Prompt the user to edit the picture
@@ -110,42 +112,66 @@ public class PicViewerUI extends Application {
 
 						// Changes the okBtn text to "Ok"
 
-						okBtn.setText("Ok");
+						okBtn.setText("Adjust");
 
 					} catch (NullPointerException npe) { // Catches the program if the user does not select an image
 
 						prompt.setText("Please select an image file");
-					
+
 					}
-					
+
 				} else if (combo.getValue().equals(list.get(0))) { // Invert the image
 
-					// Inverts each pixel of src
-					
-					srcEdit = edit.invertColors(new Image(img));
-					
-					// Outputs srcEdit for the user to see
-					
-					srcView.setImage(srcEdit);
+					// Assigns the currently display to srcTemp
+
+					srcTemp = srcView.getImage();
+
+					// Inverts each pixel of the image in srcView
+
+					srcCur = edit.invertColors(srcTemp);
+
+					// Outputs srcCur for the user to see
+
+					srcView.setImage(srcCur);
 
 					if (editBtn.isDisable()) { // Enables the editBtn if it is currently disabled
 
 						editBtn.setDisable(false);
+					}
+
+					if (undoBtn.isDisable()) { // Enables the undoBtn if it is currently disabled
+
+						undoBtn.setDisable(false);
 					}
 
 				} else if (combo.getValue().equals(list.get(1))) { // Adjust the colors of the image
 
-					// Adjusts each pixel's Argb of src
-					
-					srcEdit = edit.adjustColors(src, Integer.parseInt(input.getText()));
-					
-					// Outputs srcEdit for the user to see
-					
-					srcView.setImage(srcEdit);
+					// Assigns the currently display to srcTemp
 
-					if (editBtn.isDisable()) { // Enables the editBtn if it is currently disabled
+					srcTemp = srcView.getImage();
 
-						editBtn.setDisable(false);
+					try {
+						// Adjusts each pixel's Argb of the image in srcView
+
+						srcCur = edit.adjustColors(srcTemp, Integer.parseInt(input.getText()));
+
+						// Outputs srcCur for the user to see
+
+						srcView.setImage(srcCur);
+
+						if (editBtn.isDisable()) { // Enables the editBtn if it is currently disabled
+
+							editBtn.setDisable(false);
+						}
+
+						if (undoBtn.isDisable()) { // Enables the undoBtn if it is currently disabled
+
+							undoBtn.setDisable(false);
+						}
+
+					} catch (NumberFormatException nfe) {
+
+						prompt.setText("Please enter a number");
 					}
 				}
 			}
@@ -159,7 +185,7 @@ public class PicViewerUI extends Application {
 			public void handle(ActionEvent arg0) {
 
 				// Outputs src for the user to see
-				
+
 				srcView.setImage(src);
 
 			}
@@ -172,9 +198,30 @@ public class PicViewerUI extends Application {
 			@Override
 			public void handle(ActionEvent arg0) {
 
-				// Outputs srcEdit for the user to see
-				
-				srcView.setImage(srcEdit);
+				// Outputs srcCur for the user to see
+
+				srcView.setImage(srcCur);
+
+				if (undoBtn.isDisable()) { // Enables the undoBtn if it is currently disabled
+
+					undoBtn.setDisable(false);
+				}
+
+			}
+		});
+
+		undoBtn.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+
+				// Displays the srcTemp
+
+				srcView.setImage(srcTemp);
+
+				// Disables undoBtn
+
+				undoBtn.setDisable(true);
 
 			}
 		});
@@ -193,33 +240,111 @@ public class PicViewerUI extends Application {
 
 	}
 
+	/**
+	 * Method: comboActions 
+	 * @return void
+	 * Method Description: Create actions for each element of the combobox
+	 */
+	public void comboActions() {
+
+		combo.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+
+				if (combo.getValue().equals(list.get(0))) { // Invert the image
+
+					// Assigns the currently display to srcTemp
+
+					srcTemp = srcView.getImage();
+
+					// Inverts each pixel of the image in srcView
+
+					srcCur = edit.invertColors(srcTemp);
+
+					// Outputs srcCur for the user to see
+
+					srcView.setImage(srcCur);
+
+					if (editBtn.isDisable()) { // Enables the editBtn if it is currently disabled
+
+						editBtn.setDisable(false);
+					}
+
+					if (undoBtn.isDisable()) { // Enables the undoBtn if it is currently disabled
+
+						undoBtn.setDisable(false);
+					}
+
+					if (!input.isDisable()) {
+
+						input.setDisable(true);
+					}
+
+				} else if (combo.getValue().equals(list.get(1))) { // Enables the input TextField
+
+					// Assigns the currently display to srcTemp
+
+					srcTemp = srcView.getImage();
+
+					// Shows the original image
+
+					srcView.setImage(srcTemp);
+
+					if (input.isDisable()) { // Enables the input TextField
+
+						input.setDisable(false);
+					}
+
+					if (editBtn.isDisable()) { // Enables the editBtn if it is currently disabled
+
+						editBtn.setDisable(false);
+					}
+				}
+			}
+		});
+
+	}
+
 	/** Method: start
-	 * @param arg0
+	 * @param mainStage
 	 * @throws Exception
-	 * Method Description: TODO
+	 * Method Description: Sets up the UI
 	 */
 	@Override
 	public void start(Stage arg0) throws Exception {
 
 		edit = new PicEditor();
 
+		// Creates an observable list for the combobox
+
 		list = FXCollections.observableArrayList("Invert the Image", "Modify the Colors");
+
+		// Creating a combobox that is disabled by default
 
 		combo = new ComboBox<String>(list);
 		combo.setPromptText("Load an Image");
 		combo.setEditable(false);
 		combo.setDisable(true);
+		comboActions();
 
 		bPane = new BorderPane();
 		controls = new BorderPane();
 		btn = new BorderPane();
 		imgBtn = new GridPane();
 
+		// Creates the prompt for the user
+
 		prompt = new Label("");
+
+		// Creates the input field to modify the colors with later
+
 		input = new TextField("");
 		input.setDisable(true);
 
 		srcView = new ImageView();
+
+		// Defining the origBtn, editBtn, and the undoBtn
 
 		origBtn = new Button("Original");
 		origBtn.setMinHeight(30);
@@ -229,10 +354,19 @@ public class PicViewerUI extends Application {
 		editBtn.setMinHeight(30);
 		editBtn.setMinWidth(30);
 		editBtn.setDisable(true);
+		undoBtn = new Button("Undo");
+		undoBtn.setMinHeight(30);
+		undoBtn.setMinWidth(30);
+		undoBtn.setDisable(true);
+
+		// Adding them to the imgBtn gridpane
 
 		imgBtn.setHgap(10);
 		imgBtn.addRow(0, origBtn);
 		imgBtn.addRow(0, editBtn);
+		imgBtn.addRow(0, undoBtn);
+
+		// Defines the okBtn and the exitBtn
 
 		okBtn = new Button("Load Image");
 		okBtn.setMinHeight(30);
@@ -242,17 +376,25 @@ public class PicViewerUI extends Application {
 		exitBtn.setMinWidth(30);
 		btnActions();
 
+		// Sets the location of prompt, combo, and input
+
 		controls.setLeft(combo);
 		controls.setCenter(prompt);
 		controls.setRight(input);
+
+		// Sets the location of the btns
 
 		btn.setCenter(okBtn);
 		btn.setRight(exitBtn);
 		btn.setLeft(imgBtn);
 
+		// Sets the location of controls, btn, and srcView
+
 		bPane.setTop(controls);
 		bPane.setCenter(srcView);
 		bPane.setBottom(btn);
+
+		// Creating the stage
 
 		scene = new Scene(bPane, 800, 600);
 		mainStage = new Stage();
