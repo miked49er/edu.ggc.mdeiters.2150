@@ -1,15 +1,19 @@
 
 package edu.ggc.mdeiters.IC6;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
+
+import javax.imageio.ImageIO;
+
+import java.io.File;
 
 /** Class: PicEditor
  * @author Mike Deiters
- * @version 1.0
+ * @version 1.1
  * ITEC 2150 Spring 2015
  * Written: Mar 17, 2015
  * 
@@ -89,5 +93,25 @@ public class PicEditor {
 		}
 
 		return writePic;
+	}
+	
+	/**
+	 * Method: saveImg 
+	 * @param src File to save the image to
+	 * @return String of to tell the user if the save was successful
+	 * Method Description: saves the edited image
+	 */
+	public String saveImg(File src) {
+		
+		try {
+			
+			ImageIO.write(SwingFXUtils.fromFXImage(writePic, null), "png", src);
+			
+			return "The image saved";
+		
+		} catch (Exception e) {
+			
+			return "An error occured. Please try again.";
+		}
 	}
 }

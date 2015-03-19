@@ -1,14 +1,13 @@
 
 package edu.ggc.mdeiters.IC6;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,7 +23,7 @@ import javafx.stage.Stage;
 
 /** Class: PicViewerUI
  * @author Mike Deiters
- * @version 1.0
+ * @version 1.1
  * ITEC 2150 Spring 2015
  * Written: Mar 17, 2015
  * 
@@ -55,7 +54,9 @@ public class PicViewerUI extends Application {
 	private Button origBtn;
 	private Button editBtn;
 	private Button undoBtn;
+	private Button saveBtn;
 	private PicEditor edit;
+	private FileChooser chooser;
 
 	/**
 	 * Method: getFile 
@@ -64,7 +65,7 @@ public class PicViewerUI extends Application {
 	 */
 	public String getFile() throws RuntimeException {
 
-		FileChooser chooser = new FileChooser();
+		chooser = new FileChooser();
 		return chooser.showOpenDialog(mainStage).toURI().toString();
 	}
 
@@ -101,10 +102,11 @@ public class PicViewerUI extends Application {
 						mainStage.setMinHeight(src.getHeight() + controls.getHeight() + btn.getHeight() + 30);
 						mainStage.setMinWidth(src.getWidth());
 
-						// Enable combo, origBtn
+						// Enable combo, origBtn, saveBtn
 
 						combo.setDisable(false);
 						origBtn.setDisable(false);
+						saveBtn.setDisable(false);
 
 						// Prompt the user to edit the picture
 
@@ -210,6 +212,8 @@ public class PicViewerUI extends Application {
 			}
 		});
 
+		// Undoes the last action performed
+
 		undoBtn.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -223,6 +227,21 @@ public class PicViewerUI extends Application {
 
 				undoBtn.setDisable(true);
 
+			}
+		});
+
+		// Saves the image
+
+		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+
+				// Write to a file
+
+				File saveFile = chooser.showSaveDialog(mainStage);
+
+				edit.saveImg(saveFile);
 			}
 		});
 
@@ -344,7 +363,7 @@ public class PicViewerUI extends Application {
 
 		srcView = new ImageView();
 
-		// Defining the origBtn, editBtn, and the undoBtn
+		// Defining the origBtn, editBtn, undoBtn, and the saveBtn
 
 		origBtn = new Button("Original");
 		origBtn.setMinHeight(30);
@@ -358,6 +377,10 @@ public class PicViewerUI extends Application {
 		undoBtn.setMinHeight(30);
 		undoBtn.setMinWidth(30);
 		undoBtn.setDisable(true);
+		saveBtn = new Button("Save");
+		saveBtn.setMinHeight(30);
+		saveBtn.setMinWidth(30);
+		saveBtn.setDisable(true);
 
 		// Adding them to the imgBtn gridpane
 
@@ -365,6 +388,7 @@ public class PicViewerUI extends Application {
 		imgBtn.addRow(0, origBtn);
 		imgBtn.addRow(0, editBtn);
 		imgBtn.addRow(0, undoBtn);
+		imgBtn.addRow(0, saveBtn);
 
 		// Defines the okBtn and the exitBtn
 
