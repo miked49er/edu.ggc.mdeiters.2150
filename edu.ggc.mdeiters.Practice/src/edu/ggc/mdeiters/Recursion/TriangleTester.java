@@ -14,30 +14,13 @@ package edu.ggc.mdeiters.Recursion;
  */
 public class TriangleTester {
 
-	private int getArea(int base) {
-
-		if (base == 0) {
-
-			return 0;
-
-		} else if (base == 1) {
-
-			return 1;
-		}
-
-		int area = getArea(base - 1);
-		area += base;
-
-		return area;
-	}
-
 	/** Method: main 
 	 * @param args
-	 * Method Description: TODO
+	 * Method Description: Tester
 	 */
 	public static void main(String[] args) {
 
-		TriangleTester tri = new TriangleTester();
+		Triangle tri = new Triangle();
 
 		System.out.println("The area of the triangle in this class is " + tri.getArea(3));
 		System.out.println("The area of the triangle in this class is " + tri.getArea(10));
