@@ -1,5 +1,5 @@
 
-package edu.ggc.mdeiters.Recursion;
+package edu.ggc.mdeiters.IC7;
 
 /** Class: BinaryConverter
  * @author Mike Deiters
