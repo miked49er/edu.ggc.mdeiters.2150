@@ -1,0 +1,33 @@
+public boolean isPalindrome(Queue<Integer> que) {
+
+	Stack<Integer> sta = new Stack<Integer>();
+	ListIterator<Integer> iter = (ListIterator<Integer>) que.iterator();
+
+	while (iter.hasNext()) {
+
+		sta.push((Integer) iter.next());
+	}
+
+	while (iter.hasPrevious()) {
+
+		iter.previous();
+	}
+
+	boolean palindrome = false;
+
+	if (que.isEmpty() || que.size() == 1) {
+
+		return true;
+	}
+	if (iter.hasNext()) {
+
+		do {
+			if (iter.next() == sta.pop()) {
+				palindrome = true;
+			} else {
+				palindrome = false;
+			}
+		} while (palindrome && iter.hasNext());
+	}
+	return palindrome;
+}
