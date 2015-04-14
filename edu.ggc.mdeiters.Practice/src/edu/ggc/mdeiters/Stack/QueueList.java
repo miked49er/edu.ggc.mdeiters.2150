@@ -19,15 +19,7 @@ import java.util.PriorityQueue;
  */
 public class QueueList<T> {
 
-//	private Collection<T> priority;
-//
 	private PriorityQueue<T> priority;
-
-//
-//	public QueueList() {
-//
-//		this.priority = new LinkedList<T>();
-//	}
 
 	public QueueList(Comparator<T> cc) {
 
@@ -50,8 +42,8 @@ public class QueueList<T> {
 		}
 	}
 
-	private <T> T removeT() {
+	private T removeT() {
 
-		return (T) this.priority.remove();
+		return this.priority.remove();
 	}
 }
