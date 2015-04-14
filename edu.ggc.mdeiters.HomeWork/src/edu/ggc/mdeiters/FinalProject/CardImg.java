@@ -1,3 +1,20 @@
+
+package edu.ggc.mdeiters.FinalProject;
+
+import javafx.scene.image.Image;
+
+/**
+ * Class: CardImg
+ * @author Mike Deiters
+ * @version 1.0
+ * ITEC 2150 Spring 2015
+ * Written: Apr 14, 2015
+ * 
+ * Class Description: Databank of images for the cards
+ * 
+ * Purpose: Store the card images
+ *
+ */
 public class CardImg {
 
 	public Image cardBack;

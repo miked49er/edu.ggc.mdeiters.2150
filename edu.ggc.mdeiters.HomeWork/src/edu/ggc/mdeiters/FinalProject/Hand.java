@@ -34,6 +34,7 @@ public class Hand {
 	/**
 	 * Method: addCard 
 	 * @param card
+	 * @return void
 	 * Method Description: Adds a card to the player's hand
 	 */
 	public void addCard(Card card) {
@@ -43,6 +44,7 @@ public class Hand {
 	/**
 	 * Method: removeCard 
 	 * @param card
+	 * @return void
 	 * Method Description: Removes a card from the player's hand
 	 */
 	public void removeCard(Card card) {

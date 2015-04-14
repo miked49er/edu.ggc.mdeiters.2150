@@ -40,6 +40,7 @@ public class Player {
 	/**
 	 * Method: playCard 
 	 * @param card Card to play
+	 * @return void
 	 * Method Description: Removes a card from the player's hand and places in the discard pile
 	 */
 	public void playCard(Card card) {
