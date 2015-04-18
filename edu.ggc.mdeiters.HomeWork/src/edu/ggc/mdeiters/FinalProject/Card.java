@@ -3,9 +3,9 @@ package edu.ggc.mdeiters.FinalProject;
 
 /** Class: Card
  * @author Mike Deiters
- * @version 1.0
+ * @version 1.1
  * ITEC 2150 Spring 2015
- * Written: Feb 17, 2015
+ * Written: Apr 18, 2015   
  * 
  * 
  * This will create instances of playing cards
@@ -17,17 +17,17 @@ public class Card {
 
 	// Default values for the suits
 
-	private final int SPADES = 0;
-	private final int HEARTS = 1;
-	private final int DIAMONDS = 2;
-	private final int CLUBS = 3;
+	public final int SPADES = 0;
+	public final int HEARTS = 1;
+	public final int DIAMONDS = 2;
+	public final int CLUBS = 3;
 
 	// Default values for the face cards
 
-	private final int ACE = 1;
-	private final int JACK = 11;
-	private final int QUEEN = 12;
-	private final int KING = 13;
+	public final int ACE = 1;
+	public final int JACK = 11;
+	public final int QUEEN = 12;
+	public final int KING = 13;
 
 	private int suit; // Int that is between 0 and 3 to decide the suit of the card
 	private int value; // Int that is between 1 and 13 to decide the value of the card

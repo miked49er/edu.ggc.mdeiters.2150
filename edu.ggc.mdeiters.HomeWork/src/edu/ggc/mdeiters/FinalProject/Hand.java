@@ -14,41 +14,45 @@ import java.util.ArrayList;
  * Purpose: To control the player's hand
  * 
  */
-public class Hand {
+public class Hand extends CardDeck {
 
 	private ArrayList<Card> hand;
-	private ArrayList<Card> playableCards;
+	private DiscardPile discard;
 	private GameRules game;
 
 	/**
 	 * Constructor: Hand
+	 * @throws InvalidCardException
 	 *
 	 */
-	public Hand() {
+	public Hand() throws InvalidCardException {
 
 		this.hand = new ArrayList<Card>();
-		this.playableCards = new ArrayList<Card>();
+		this.discard = new DiscardPile();
 		this.game = new GameRules();
 	}
 
 	/**
 	 * Method: addCard 
-	 * @param card
 	 * @return void
-	 * Method Description: Adds a card to the player's hand
+	 * Method Description: Deals a card to the player's hand
+	 * @throws InvalidCardException 
 	 */
-	public void addCard(Card card) {
+	public void addCard() throws InvalidCardException {
 
+		this.hand.add(deal());
 	}
 
 	/**
 	 * Method: removeCard 
 	 * @param card
 	 * @return void
-	 * Method Description: Removes a card from the player's hand
+	 * Method Description: Removes a card from the player's hand and places it in the discardPile
 	 */
 	public void removeCard(Card card) {
 
+		this.discard.addCard(card);
+		this.hand.remove(card);
 	}
 
 	/**
@@ -59,16 +63,6 @@ public class Hand {
 	public ArrayList<Card> getHand() {
 
 		return this.hand;
-	}
-
-	/**
-	 * Method: getPlayableCards 
-	 * @return playableCards
-	 * Method Description: Return an ArrayList of the player's playable cards
-	 */
-	public ArrayList<Card> getPlayableCards() {
-
-		return this.playableCards;
 	}
 
 }

@@ -21,7 +21,6 @@ public class CardDeck {
 
 	private ArrayList<Card> deck = new ArrayList<Card>();
 	private Card dealedCard;
-	private Stack<Card> discardPile = new Stack<Card>();
 
 	/**
 	 * Constructor
@@ -78,11 +77,11 @@ public class CardDeck {
 
 			// Assigns the top card to dealedCard
 
-			dealedCard = deck.get(0);
+			dealedCard = deck.get(deck.size() - 1);
 
 			// Removes the top card from the deck
 
-			deck.remove(0);
+			deck.remove(deck.size() - 1);
 		}
 		else {
 
@@ -93,35 +92,13 @@ public class CardDeck {
 	}
 
 	/**
-	 * Method: getDiscardPile 
-	 * @return the Card on top of discardPile
-	 * Method Description: This will peek at the top card on discardPile and return it
+	 * Method: rebuildDeck 
+	 * @param deck ArrayList of Cards
+	 * Method Description: Rebuilds the empty deck
 	 */
-	public Card getDiscardPile() {
+	public void rebuildDeck(ArrayList<Card> deck) {
 
-		return discardPile.peek();
-	}
-
-	/**
-	 * Method: addToDiscardPile 
-	 * @param card
-	 * Method Description: Pushes card to discardPile
-	 */
-	public void addToDiscardPile(Card card) {
-
-		discardPile.push(card);
-	}
-
-	/**
-	 * Method: changeSuit 
-	 * @return card Card
-	 * Method Description: Changes the suit of the wild 8 card
-	 */
-	public Card changeSuit() {
-
-		Card card = new Card();
-
-		return card;
+		this.deck = deck;
 	}
 
 	/**

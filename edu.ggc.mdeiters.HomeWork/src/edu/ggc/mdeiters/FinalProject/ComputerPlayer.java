@@ -26,9 +26,10 @@ public class ComputerPlayer extends Player {
 
 	/**
 	 * Constructor: ComputerPlayer
+	 * @throws InvalidCardException
 	 *
 	 */
-	public ComputerPlayer() {
+	public ComputerPlayer() throws InvalidCardException {
 
 	}
 

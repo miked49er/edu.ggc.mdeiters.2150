@@ -18,9 +18,10 @@ public class Player {
 
 	/**
 	 * Constructor: Player
+	 * @throws InvalidCardException 
 	 *
 	 */
-	public Player() {
+	public Player() throws InvalidCardException {
 
 		this.hand = new Hand();
 	}
