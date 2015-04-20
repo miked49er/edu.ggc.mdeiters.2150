@@ -1,7 +1,11 @@
 
 package edu.ggc.mdeiters.FinalProject;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /** Class: GameRules
  * @author Mike Deiters
@@ -31,18 +35,15 @@ public class GameRules {
 	/**
 	 * Method: canPlay 
 	 * @param hand The player's hand
+	 * @param onPile the top card of the discard pile
 	 * @return canPlay boolean
 	 * Method Description: checks to see if the player can play from their hand
 	 */
-	public boolean canPlay(Hand hand) {
+	public boolean canPlay(Hand hand, Card onPile) {
 
 		// Creates a boolean for testing if the player can play
 
 		Boolean canPlay = false;
-
-		// Gets the top card of the discard pile to compare to the player's hand
-
-		Card onPile = discard.getTopCard();
 
 		// Retrieves the player's hand
 
@@ -70,18 +71,15 @@ public class GameRules {
 	/**
 	 * Method: isValid 
 	 * @param card Card that the player is trying to play
+	 * @param onPile the top card of the discard pile
 	 * @return isValid boolean
 	 * Method Description: Verifies to ensure that the player is making a legal play
 	 */
-	public boolean isValid(Card card) {
+	public boolean isValid(Card card, Card onPile) {
 
 		// Creates a boolean for testing if the player is making a legal play
 
 		boolean isValid = false;
-
-		// Gets the top card of the discard pile to compare to the player's hand
-
-		Card onPile = discard.getTopCard();
 
 		if (card.getSuit() == onPile.getSuit()) { // If the suit of card is the same as the suit of onPile, then set isValid to true
 
@@ -111,11 +109,24 @@ public class GameRules {
 
 	/**
 	 * Method: isHasWon 
-	 * @param player Player of game
+	 * @param hand The player's hand
 	 * @return hasWon boolean
 	 * Method Description: Checks to see if a player has won
 	 */
-	public boolean hasWon() {
+	public boolean hasWon(Hand hand) {
+
+		// Creates a boolean for testing if the player has won
+
+		boolean hasWon = false;
+
+		// Retrieves the player's hand
+
+		ArrayList<Card> playerHand = hand.getHand();
+
+		if (playerHand.isEmpty()) {
+
+			hasWon = true;
+		}
 
 		return hasWon;
 	}
@@ -127,8 +138,41 @@ public class GameRules {
 	 */
 	public String toString() {
 
+		String OS = System.getProperty("os.name");
+		FileReader inFile;
 		String str = "";
+
+		try {
+
+			if (OS.startsWith("Windows")) { // Determines the file system to find the Crazy8s.txt file
+
+				inFile = new FileReader("_txt\\Crazy8s.txt");
+			}
+			else {
+
+				inFile = new FileReader("_txt/Crazy8s.txt");
+			}
+
+			// Creating a Scanner to read the FileReader
+
+			Scanner input = new Scanner(inFile);
+
+			while (input.hasNext()) { // Adds each line of the file to the ArrayList fileList
+
+				str += input.nextLine() + "\n";
+			}
+
+			inFile.close();
+		}
+		catch (FileNotFoundException fnf) {
+
+			return fnf.getMessage();
+		}
+		catch (IOException ioe) {
+
+			return ioe.getMessage();
+		}
+
 		return str;
 	}
-
 }
