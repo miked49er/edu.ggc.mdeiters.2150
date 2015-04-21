@@ -53,6 +53,27 @@ public class Hand extends CardDeck {
 	}
 
 	/**
+	 * Method: isInHand 
+	 * @param card Card to look for in hand
+	 * @return isInHand Boolean
+	 * Method Description: Checks to see if the card is in the player's hand
+	 */
+	public boolean isInHand(Card card) {
+
+		boolean isInHand = false;
+
+		for (int i = 0; !isInHand && i < hand.size(); i++) {
+
+			if (hand.get(i) == card) {
+
+				isInHand = true;
+			}
+		}
+
+		return isInHand;
+	}
+
+	/**
 	 * Method: getHand 
 	 * @return hand
 	 * Method Description: Return an ArrayList of the player's hand
