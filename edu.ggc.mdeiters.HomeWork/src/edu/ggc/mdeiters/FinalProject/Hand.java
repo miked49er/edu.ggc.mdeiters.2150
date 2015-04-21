@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class Hand extends CardDeck {
 
 	private ArrayList<Card> hand;
-	private DiscardPile discard;
 	private GameRules game;
 
 	/**
@@ -28,7 +27,6 @@ public class Hand extends CardDeck {
 	public Hand() throws InvalidCardException {
 
 		this.hand = new ArrayList<Card>();
-		this.discard = new DiscardPile();
 		this.game = new GameRules();
 	}
 
@@ -47,11 +45,10 @@ public class Hand extends CardDeck {
 	 * Method: removeCard 
 	 * @param card
 	 * @return void
-	 * Method Description: Removes a card from the player's hand and places it in the discardPile
+	 * Method Description: Removes a card from the player's hand to be places it in the discardPile
 	 */
 	public void removeCard(Card card) {
 
-		this.discard.addCard(card);
 		this.hand.remove(card);
 	}
 
