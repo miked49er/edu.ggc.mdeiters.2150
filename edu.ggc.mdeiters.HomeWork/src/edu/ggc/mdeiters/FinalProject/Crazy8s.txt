@@ -1,0 +1,13 @@
+Rules for Crazy 8's
+
+	1.	Each player is dealt 8 cards initially
+	2.	Once the players have been dealt their cards, the top card is turned face up beside the draw pile
+	3.	The user will go before the computer player
+	4.	The player has three choices of cards to play
+		a.	They can play a card that is the same suit as the card on the top of the discard pile
+		b.	They can play a card that has the same number as the card on the top of the discard pile
+		c.	They can play an 8. If the player plays an 8, the player can tell which suit is now being played
+	5.	If the player can play, they must play
+	6.	If the player cannot play, they must draw until they can play
+	7.	If the draw pile is exhausted, the top card of the discard pile is placed in a new discard pile and the cards from the old discard pile are shuffled and put into a new draw pile
+	8. The object of the game is to get rid of your cards
