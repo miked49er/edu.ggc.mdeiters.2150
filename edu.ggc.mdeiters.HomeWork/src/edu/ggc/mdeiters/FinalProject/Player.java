@@ -1,6 +1,8 @@
 
 package edu.ggc.mdeiters.FinalProject;
 
+import java.util.ArrayList;
+
 /** Class: Player
  * @author Mike Deiters
  * @version 1.0
@@ -30,14 +32,13 @@ public class Player {
 
 	/**
 	 * Method: drawCard 
-	 * @return card Card
+	 * @return void
+	 * @throws InvalidCardException 
 	 * Method Description: Draws a card from the top of the deck and places in user's hand
 	 */
-	public Card drawCard() {
+	public void drawCard() throws InvalidCardException {
 
-		Card card = new Card();
-
-		return card;
+		hand.addCard();
 	}
 
 	/**
@@ -50,29 +51,43 @@ public class Player {
 
 		if (game.isValid(hand, card, onPile)) {
 
+			if (card.getValue() == 8) {
+
+				ArrayList<Card> playerHand = hand.getHand();
+
+				for (int i = 0; i < playerHand.size(); i++) {
+
+					if (playerHand.get(i).getValue() == 8) {
+
+						card = playerHand.get(i);
+					}
+				}
+			}
+
 			hand.removeCard(card);
 			return true;
+
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Method: getPlayerHand 
 	 * @return Hand
 	 * Method Description: Return the player's hand
 	 */
 	public Hand getPlayerHand() {
-		
+
 		return hand;
 	}
-	
+
 	/**
 	 * Method: getGameRules 
 	 * @return GameRules
 	 * Method Description: Returns the GameRules variable game
 	 */
 	public GameRules getGameRules() {
-		
+
 		return game;
 	}
 
