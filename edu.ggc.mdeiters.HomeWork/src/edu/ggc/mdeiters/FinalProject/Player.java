@@ -32,13 +32,14 @@ public class Player {
 
 	/**
 	 * Method: drawCard 
+	 * @param deck CardDeck
 	 * @return void
 	 * @throws InvalidCardException 
 	 * Method Description: Draws a card from the top of the deck and places in user's hand
 	 */
-	public void drawCard() throws InvalidCardException {
+	public void drawCard(CardDeck deck) throws InvalidCardException {
 
-		hand.addCard();
+		hand.addCard(deck);
 	}
 
 	/**
@@ -51,13 +52,17 @@ public class Player {
 
 		if (game.isValid(hand, card, onPile)) {
 
-			if (card.getValue() == 8) {
+			if (card.getValue() == 8) { // If card is an 8 then locate the 8 in player's hand
+
+				// Assigns the hand ArrayList to playerHand
 
 				ArrayList<Card> playerHand = hand.getHand();
 
-				for (int i = 0; i < playerHand.size(); i++) {
+				for (int i = 0; i < playerHand.size(); i++) { // Loop through playerHand to find the 8
 
 					if (playerHand.get(i).getValue() == 8) {
+
+						// Assigns the 8 card to card to be removed
 
 						card = playerHand.get(i);
 					}

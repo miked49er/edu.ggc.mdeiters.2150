@@ -17,6 +17,11 @@ import javafx.application.Application;
  */
 class CrazyEightLauncher {
 
+	/**
+	 * Method: main 
+	 * @param arg0
+	 * Method Description: Launches the JavaFX UI
+	 */
 	public static void main(String[] arg0) {
 
 		Application.launch(CrazyEightsUI.class);

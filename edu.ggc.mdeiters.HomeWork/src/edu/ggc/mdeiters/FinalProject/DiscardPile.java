@@ -28,6 +28,20 @@ public class DiscardPile extends CardDeck {
 	}
 
 	/**
+	 * Method: changeSuit 
+	 * @param card
+	 * Method Description: Changes the suit of the eight on the discard pile
+	 */
+	public void changeSuit(Card card) {
+
+		if (card.getValue() == 8) { // If the card is an 8 then change the suit of the card on the discardPile
+
+			discardPile.pop();
+			discardPile.push(card);
+		}
+	}
+
+	/**
 	 * Method: getTopCard 
 	 * @return the Card on top of discardPile
 	 * Method Description: This will peek at the top card on discardPile and return it
@@ -49,30 +63,34 @@ public class DiscardPile extends CardDeck {
 
 	/**
 	 * Method: refreshDeck 
+	 * @param cardDeck CardDeck
 	 * @return void
 	 * Method Description: Keeps the top card of the discard pile. The returns the rest of the cards to the card deck and shuffle's them
 	 * @throws Exception 
 	 */
-	public void refreshDeck() throws Exception {
+	public void refreshDeck(CardDeck cardDeck) throws Exception {
 
-		// Holds the first card of the discardPile to place back in discardPile
+		if (cardDeck.getDeck().size() <= 0) {
 
-		Card hold = this.discardPile.pop();
-		ArrayList<Card> deck = new ArrayList<Card>();
+			// Holds the first card of the discardPile to place back in discardPile
 
-		for (int i = 0; i < discardPile.size(); i++) { // Removes each card from discardPile and adds it to the new deck
+			Card hold = this.discardPile.pop();
+			ArrayList<Card> deck = new ArrayList<Card>();
 
-			deck.add(discardPile.pop());
+			for (int i = 0; i < discardPile.size(); i++) { // Removes each card from discardPile and adds it to the new deck
+
+				deck.add(discardPile.pop());
+			}
+
+			cardDeck.rebuildDeck(deck);
+
+			if (!cardDeck.shuffle()) {
+
+				throw new Exception("Rebuilt deck, but was unable to shuffle.");
+			}
+
+			addCard(hold);
 		}
-
-		rebuildDeck(deck);
-
-		if (!shuffle()) {
-
-			throw new Exception("Rebuilt deck, but was unable to shuffle.");
-		}
-
-		addCard(hold);
 	}
 
 }

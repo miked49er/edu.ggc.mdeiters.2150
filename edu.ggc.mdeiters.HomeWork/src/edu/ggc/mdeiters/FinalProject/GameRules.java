@@ -1,6 +1,7 @@
 
 package edu.ggc.mdeiters.FinalProject;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,10 +25,9 @@ public class GameRules {
 
 	/**
 	 * Constructor: GameRules
-	 * @throws InvalidCardException 
 	 *
 	 */
-	public GameRules() throws InvalidCardException {
+	public GameRules() {
 
 		this.STARTINGHAND = 8;
 	}
@@ -82,7 +82,7 @@ public class GameRules {
 
 		boolean isValid = false;
 
-		if (hand.isInHand(card)) {
+		if (hand.isInHand(card) || card.getValue() == 8) {
 
 			if (card.getValue() == 8) { // if the card is an 8, then set isValid to true
 
@@ -148,14 +148,18 @@ public class GameRules {
 
 		try {
 
+			String filePath = new File("").getAbsolutePath();
+
 			if (OS.startsWith("Windows")) { // Determines the file system to find the Crazy8s.txt file
 
-				inFile = new FileReader("_txt\\Crazy8s.txt");
+				filePath += "\\bin\\edu\\ggc\\mdeiters\\FinalProject\\Text\\Crazy8s.txt";
 			}
 			else {
 
-				inFile = new FileReader("_txt/Crazy8s.txt");
+				filePath += "/bin/edu/ggc/mdeiters/FinalProject/Text/Crazy8s.txt";
 			}
+
+			inFile = new FileReader(filePath);
 
 			// Creating a Scanner to read the FileReader
 

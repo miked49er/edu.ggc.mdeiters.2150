@@ -40,6 +40,16 @@ public class CardDeck {
 	}
 
 	/**
+	 * Method: getDeck 
+	 * @return ArrayList<Card>
+	 * Method Description: Returns the deck
+	 */
+	public ArrayList<Card> getDeck() {
+
+		return deck;
+	}
+
+	/**
 	 * Method: shuffle
 	 * This will randomize the deck ArrayList to shuffle it
 	 * @return boolean

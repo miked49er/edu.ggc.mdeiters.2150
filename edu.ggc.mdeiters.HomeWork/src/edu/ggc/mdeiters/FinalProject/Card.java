@@ -32,6 +32,10 @@ public class Card {
 	private int suit; // Int that is between 0 and 3 to decide the suit of the card
 	private int value; // Int that is between 1 and 13 to decide the value of the card
 
+	/**
+	 * Constructor: Card
+	 *
+	 */
 	public Card() {
 
 	}
@@ -51,6 +55,7 @@ public class Card {
 			this.suit = suit;
 		}
 		else {
+
 			throw new InvalidCardException("Not a valid card suit");
 		}
 
@@ -60,6 +65,7 @@ public class Card {
 			this.value = value;
 		}
 		else {
+
 			throw new InvalidCardException("Not a valid card value");
 		}
 

@@ -1,7 +1,6 @@
 
 package edu.ggc.mdeiters.FinalProject;
 
-import javafx.scene.image.Image;
 
 /**
  * Class: CardImg
@@ -17,120 +16,310 @@ import javafx.scene.image.Image;
  */
 public class CardImg {
 
-	public Image cardBack;
-	public Image aceSpades;
-	public Image twoSpades;
-	public Image threeSpades;
-	public Image fourSpades;
-	public Image fiveSpades;
-	public Image sixSpades;
-	public Image sevenSpades;
-	public Image eightSpades;
-	public Image nineSpades;
-	public Image tenSpades;
-	public Image jackSpades;
-	public Image queenSpades;
-	public Image kingSpades;
-	public Image aceHearts;
-	public Image twoHearts;
-	public Image threeHearts;
-	public Image fourHearts;
-	public Image fiveHearts;
-	public Image sixHearts;
-	public Image sevenHearts;
-	public Image eightHearts;
-	public Image nineHearts;
-	public Image tenHearts;
-	public Image jackHearts;
-	public Image queenHearts;
-	public Image kingHearts;
-	public Image aceDiamonds;
-	public Image twoDiamonds;
-	public Image threeDiamonds;
-	public Image fourDiamonds;
-	public Image fiveDiamonds;
-	public Image sixDiamonds;
-	public Image sevenDiamonds;
-	public Image eightDiamonds;
-	public Image nineDiamonds;
-	public Image tenDiamonds;
-	public Image jackDiamonds;
-	public Image queenDiamonds;
-	public Image kingDiamonds;
-	public Image aceClubs;
-	public Image twoClubs;
-	public Image threeClubs;
-	public Image fourClubs;
-	public Image fiveClubs;
-	public Image sixClubs;
-	public Image sevenClubs;
-	public Image eightClubs;
-	public Image nineClubs;
-	public Image tenClubs;
-	public Image jackClubs;
-	public Image queenClubs;
-	public Image kingClubs;
+	public String cardBack;
+	public String aceSpades;
+	public String twoSpades;
+	public String threeSpades;
+	public String fourSpades;
+	public String fiveSpades;
+	public String sixSpades;
+	public String sevenSpades;
+	public String eightSpades;
+	public String nineSpades;
+	public String tenSpades;
+	public String jackSpades;
+	public String queenSpades;
+	public String kingSpades;
+	public String aceHearts;
+	public String twoHearts;
+	public String threeHearts;
+	public String fourHearts;
+	public String fiveHearts;
+	public String sixHearts;
+	public String sevenHearts;
+	public String eightHearts;
+	public String nineHearts;
+	public String tenHearts;
+	public String jackHearts;
+	public String queenHearts;
+	public String kingHearts;
+	public String aceDiamonds;
+	public String twoDiamonds;
+	public String threeDiamonds;
+	public String fourDiamonds;
+	public String fiveDiamonds;
+	public String sixDiamonds;
+	public String sevenDiamonds;
+	public String eightDiamonds;
+	public String nineDiamonds;
+	public String tenDiamonds;
+	public String jackDiamonds;
+	public String queenDiamonds;
+	public String kingDiamonds;
+	public String aceClubs;
+	public String twoClubs;
+	public String threeClubs;
+	public String fourClubs;
+	public String fiveClubs;
+	public String sixClubs;
+	public String sevenClubs;
+	public String eightClubs;
+	public String nineClubs;
+	public String tenClubs;
+	public String jackClubs;
+	public String queenClubs;
+	public String kingClubs;
+
+	/**
+	 * Constructor: CardImg
+	 * @param OS String of the computer's operating system
+	 */
+	public CardImg(String OS) {
+
+		if (OS.startsWith("Windows")) { // Determines the file system to find the Crazy8s.txt file
+
+			WindowsImg();
+		}
+		else {
+
+			UnixImg();
+		}
+	}
+
+	/**
+	 * Method: findImage 
+	 * @param card Card
+	 * @return String of the image location
+	 * Method Description: Finds the associated card's image
+	 */
+	public String findImage(Card card) {
+
+		if (card == null) { // If card is null return the cardBack image
+
+			return cardBack;
+		}
+		switch (card.getValueAsString()) { // Looks first at the card's value then the suit to find which image is associated with the card
+			case "Ace":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return aceSpades;
+					case "Hearts":
+						return aceHearts;
+					case "Diamonds":
+						return aceDiamonds;
+					case "Clubs":
+						return aceClubs;
+				}
+			case "2":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return twoSpades;
+					case "Hearts":
+						return twoHearts;
+					case "Diamonds":
+						return twoDiamonds;
+					case "Clubs":
+						return twoClubs;
+				}
+			case "3":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return threeSpades;
+					case "Hearts":
+						return threeHearts;
+					case "Diamonds":
+						return threeDiamonds;
+					case "Clubs":
+						return threeClubs;
+				}
+			case "4":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return fourSpades;
+					case "Hearts":
+						return fourHearts;
+					case "Diamonds":
+						return fourDiamonds;
+					case "Clubs":
+						return fourClubs;
+				}
+			case "5":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return fiveSpades;
+					case "Hearts":
+						return fiveHearts;
+					case "Diamonds":
+						return fiveDiamonds;
+					case "Clubs":
+						return fiveClubs;
+				}
+			case "6":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return sixSpades;
+					case "Hearts":
+						return sixHearts;
+					case "Diamonds":
+						return sixDiamonds;
+					case "Clubs":
+						return sixClubs;
+				}
+			case "7":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return sevenSpades;
+					case "Hearts":
+						return sevenHearts;
+					case "Diamonds":
+						return sevenDiamonds;
+					case "Clubs":
+						return sevenClubs;
+				}
+			case "8":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return eightSpades;
+					case "Hearts":
+						return eightHearts;
+					case "Diamonds":
+						return eightDiamonds;
+					case "Clubs":
+						return eightClubs;
+				}
+			case "9":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return nineSpades;
+					case "Hearts":
+						return nineHearts;
+					case "Diamonds":
+						return nineDiamonds;
+					case "Clubs":
+						return nineClubs;
+				}
+			case "10":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return tenSpades;
+					case "Hearts":
+						return tenHearts;
+					case "Diamonds":
+						return tenDiamonds;
+					case "Clubs":
+						return tenClubs;
+				}
+			case "Jack":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return jackSpades;
+					case "Hearts":
+						return jackHearts;
+					case "Diamonds":
+						return jackDiamonds;
+					case "Clubs":
+						return jackClubs;
+				}
+			case "Queen":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return queenSpades;
+					case "Hearts":
+						return queenHearts;
+					case "Diamonds":
+						return queenDiamonds;
+					case "Clubs":
+						return queenClubs;
+				}
+			case "King":
+
+				switch (card.getSuitAsString()) {
+					case "Spades":
+						return kingSpades;
+					case "Hearts":
+						return kingHearts;
+					case "Diamonds":
+						return kingDiamonds;
+					case "Clubs":
+						return kingClubs;
+				}
+			default:
+				return cardBack;
+		}
+	}
 
 	/**
 	 * Method: WindowsImg 
 	 * @return void
 	 * Method Description: Locates the images using the Windows file system
 	 */
-	public void WindowsImg() {
+	private void WindowsImg() {
 
-		this.cardBack = new Image("_images\\Card_Back.png");
-		this.aceSpades = new Image("_images\\Spades_Ace.png");
-		this.twoSpades = new Image("_images\\Spades_2.png");
-		this.threeSpades = new Image("_images\\Spades_3.png");
-		this.fourSpades = new Image("_images\\Spades_4.png");
-		this.fiveSpades = new Image("_images\\Spades_5.png");
-		this.sixSpades = new Image("_images\\Spades_6.png");
-		this.sevenSpades = new Image("_images\\Spades_7.png");
-		this.eightSpades = new Image("_images\\Spades_8.png");
-		this.nineSpades = new Image("_images\\Spades_9.png");
-		this.tenSpades = new Image("_images\\Spades_10.png");
-		this.jackSpades = new Image("_images\\Spades_Jack.png");
-		this.queenSpades = new Image("_images\\Spades_Queen.png");
-		this.kingSpades = new Image("_images\\Spades_King.png");
-		this.aceHearts = new Image("_images\\Hearts_Ace.png");
-		this.twoHearts = new Image("_images\\Hearts_2.png");
-		this.threeHearts = new Image("_images\\Hearts_3.png");
-		this.fourHearts = new Image("_images\\Hearts_4.png");
-		this.fiveHearts = new Image("_images\\Hearts_5.png");
-		this.sixHearts = new Image("_images\\Hearts_6.png");
-		this.sevenHearts = new Image("_images\\Hearts_7.png");
-		this.eightHearts = new Image("_images\\Hearts_8.png");
-		this.nineHearts = new Image("_images\\Hearts_9.png");
-		this.tenHearts = new Image("_images\\Hearts_10.png");
-		this.jackHearts = new Image("_images\\Hearts_Jack.png");
-		this.queenHearts = new Image("_images\\Hearts_Queen.png");
-		this.kingHearts = new Image("_images\\Hearts_King.png");
-		this.aceDiamonds = new Image("_images\\Diamonds_Ace.png");
-		this.twoDiamonds = new Image("_images\\Diamonds_2.png");
-		this.threeDiamonds = new Image("_images\\Diamonds_3.png");
-		this.fourDiamonds = new Image("_images\\Diamonds_4.png");
-		this.fiveDiamonds = new Image("_images\\Diamonds_5.png");
-		this.sixDiamonds = new Image("_images\\Diamonds_6.png");
-		this.sevenDiamonds = new Image("_images\\Diamonds_7.png");
-		this.eightDiamonds = new Image("_images\\Diamonds_8.png");
-		this.nineDiamonds = new Image("_images\\Diamonds_9.png");
-		this.tenDiamonds = new Image("_images\\Diamonds_10.png");
-		this.jackDiamonds = new Image("_images\\Diamonds_Jack.png");
-		this.queenDiamonds = new Image("_images\\Diamonds_Queen.png");
-		this.kingDiamonds = new Image("_images\\Diamonds_King.png");
-		this.aceClubs = new Image("_images\\Clubs_Ace.png");
-		this.twoClubs = new Image("_images\\Clubs_2.png");
-		this.threeClubs = new Image("_images\\Clubs_3.png");
-		this.fourClubs = new Image("_images\\Clubs_4.png");
-		this.fiveClubs = new Image("_images\\Clubs_5.png");
-		this.sixClubs = new Image("_images\\Clubs_6.png");
-		this.sevenClubs = new Image("_images\\Clubs_7.png");
-		this.eightClubs = new Image("_images\\Clubs_8.png");
-		this.nineClubs = new Image("_images\\Clubs_9.png");
-		this.tenClubs = new Image("_images\\Clubs_10.png");
-		this.jackClubs = new Image("_images\\Clubs_Jack.png");
-		this.queenClubs = new Image("_images\\Clubs_Queen.png");
-		this.kingClubs = new Image("_images\\Clubs_King.png");
+		this.cardBack = getClass().getResource("Images\\Card_Back.png").toExternalForm();
+		this.aceSpades = getClass().getResource("Images\\Spades_Ace.png").toExternalForm();
+		this.twoSpades = getClass().getResource("Images\\Spades_2.png").toExternalForm();
+		this.threeSpades = getClass().getResource("Images\\Spades_3.png").toExternalForm();
+		this.fourSpades = getClass().getResource("Images\\Spades_4.png").toExternalForm();
+		this.fiveSpades = getClass().getResource("Images\\Spades_5.png").toExternalForm();
+		this.sixSpades = getClass().getResource("Images\\Spades_6.png").toExternalForm();
+		this.sevenSpades = getClass().getResource("Images\\Spades_7.png").toExternalForm();
+		this.eightSpades = getClass().getResource("Images\\Spades_8.png").toExternalForm();
+		this.nineSpades = getClass().getResource("Images\\Spades_9.png").toExternalForm();
+		this.tenSpades = getClass().getResource("Images\\Spades_10.png").toExternalForm();
+		this.jackSpades = getClass().getResource("Images\\Spades_Jack.png").toExternalForm();
+		this.queenSpades = getClass().getResource("Images\\Spades_Queen.png").toExternalForm();
+		this.kingSpades = getClass().getResource("Images\\Spades_King.png").toExternalForm();
+		this.aceHearts = getClass().getResource("Images\\Hearts_Ace.png").toExternalForm();
+		this.twoHearts = getClass().getResource("Images\\Hearts_2.png").toExternalForm();
+		this.threeHearts = getClass().getResource("Images\\Hearts_3.png").toExternalForm();
+		this.fourHearts = getClass().getResource("Images\\Hearts_4.png").toExternalForm();
+		this.fiveHearts = getClass().getResource("Images\\Hearts_5.png").toExternalForm();
+		this.sixHearts = getClass().getResource("Images\\Hearts_6.png").toExternalForm();
+		this.sevenHearts = getClass().getResource("Images\\Hearts_7.png").toExternalForm();
+		this.eightHearts = getClass().getResource("Images\\Hearts_8.png").toExternalForm();
+		this.nineHearts = getClass().getResource("Images\\Hearts_9.png").toExternalForm();
+		this.tenHearts = getClass().getResource("Images\\Hearts_10.png").toExternalForm();
+		this.jackHearts = getClass().getResource("Images\\Hearts_Jack.png").toExternalForm();
+		this.queenHearts = getClass().getResource("Images\\Hearts_Queen.png").toExternalForm();
+		this.kingHearts = getClass().getResource("Images\\Hearts_King.png").toExternalForm();
+		this.aceDiamonds = getClass().getResource("Images\\Diamonds_Ace.png").toExternalForm();
+		this.twoDiamonds = getClass().getResource("Images\\Diamonds_2.png").toExternalForm();
+		this.threeDiamonds = getClass().getResource("Images\\Diamonds_3.png").toExternalForm();
+		this.fourDiamonds = getClass().getResource("Images\\Diamonds_4.png").toExternalForm();
+		this.fiveDiamonds = getClass().getResource("Images\\Diamonds_5.png").toExternalForm();
+		this.sixDiamonds = getClass().getResource("Images\\Diamonds_6.png").toExternalForm();
+		this.sevenDiamonds = getClass().getResource("Images\\Diamonds_7.png").toExternalForm();
+		this.eightDiamonds = getClass().getResource("Images\\Diamonds_8.png").toExternalForm();
+		this.nineDiamonds = getClass().getResource("Images\\Diamonds_9.png").toExternalForm();
+		this.tenDiamonds = getClass().getResource("Images\\Diamonds_10.png").toExternalForm();
+		this.jackDiamonds = getClass().getResource("Images\\Diamonds_Jack.png").toExternalForm();
+		this.queenDiamonds = getClass().getResource("Images\\Diamonds_Queen.png").toExternalForm();
+		this.kingDiamonds = getClass().getResource("Images\\Diamonds_King.png").toExternalForm();
+		this.aceClubs = getClass().getResource("Images\\Clubs_Ace.png").toExternalForm();
+		this.twoClubs = getClass().getResource("Images\\Clubs_2.png").toExternalForm();
+		this.threeClubs = getClass().getResource("Images\\Clubs_3.png").toExternalForm();
+		this.fourClubs = getClass().getResource("Images\\Clubs_4.png").toExternalForm();
+		this.fiveClubs = getClass().getResource("Images\\Clubs_5.png").toExternalForm();
+		this.sixClubs = getClass().getResource("Images\\Clubs_6.png").toExternalForm();
+		this.sevenClubs = getClass().getResource("Images\\Clubs_7.png").toExternalForm();
+		this.eightClubs = getClass().getResource("Images\\Clubs_8.png").toExternalForm();
+		this.nineClubs = getClass().getResource("Images\\Clubs_9.png").toExternalForm();
+		this.tenClubs = getClass().getResource("Images\\Clubs_10.png").toExternalForm();
+		this.jackClubs = getClass().getResource("Images\\Clubs_Jack.png").toExternalForm();
+		this.queenClubs = getClass().getResource("Images\\Clubs_Queen.png").toExternalForm();
+		this.kingClubs = getClass().getResource("Images\\Clubs_King.png").toExternalForm();
 
 	}
 
@@ -139,60 +328,60 @@ public class CardImg {
 	 * @return void
 	 * Method Description: Locates the images using the Unix file system
 	 */
-	public void UnixImg() {
+	private void UnixImg() {
 
-		this.cardBack = new Image("_images/Card_Back.png");
-		this.aceSpades = new Image("_images/Spades_Ace.png");
-		this.twoSpades = new Image("_images/Spades_2.png");
-		this.threeSpades = new Image("_images/Spades_3.png");
-		this.fourSpades = new Image("_images/Spades_4.png");
-		this.fiveSpades = new Image("_images/Spades_5.png");
-		this.sixSpades = new Image("_images/Spades_6.png");
-		this.sevenSpades = new Image("_images/Spades_7.png");
-		this.eightSpades = new Image("_images/Spades_8.png");
-		this.nineSpades = new Image("_images/Spades_9.png");
-		this.tenSpades = new Image("_images/Spades_10.png");
-		this.jackSpades = new Image("_images/Spades_Jack.png");
-		this.queenSpades = new Image("_images/Spades_Queen.png");
-		this.kingSpades = new Image("_images/Spades_King.png");
-		this.aceHearts = new Image("_images/Hearts_Ace.png");
-		this.twoHearts = new Image("_images/Hearts_2.png");
-		this.threeHearts = new Image("_images/Hearts_3.png");
-		this.fourHearts = new Image("_images/Hearts_4.png");
-		this.fiveHearts = new Image("_images/Hearts_5.png");
-		this.sixHearts = new Image("_images/Hearts_6.png");
-		this.sevenHearts = new Image("_images/Hearts_7.png");
-		this.eightHearts = new Image("_images/Hearts_8.png");
-		this.nineHearts = new Image("_images/Hearts_9.png");
-		this.tenHearts = new Image("_images/Hearts_10.png");
-		this.jackHearts = new Image("_images/Hearts_Jack.png");
-		this.queenHearts = new Image("_images/Hearts_Queen.png");
-		this.kingHearts = new Image("_images/Hearts_King.png");
-		this.aceDiamonds = new Image("_images/Diamonds_Ace.png");
-		this.twoDiamonds = new Image("_images/Diamonds_2.png");
-		this.threeDiamonds = new Image("_images/Diamonds_3.png");
-		this.fourDiamonds = new Image("_images/Diamonds_4.png");
-		this.fiveDiamonds = new Image("_images/Diamonds_5.png");
-		this.sixDiamonds = new Image("_images/Diamonds_6.png");
-		this.sevenDiamonds = new Image("_images/Diamonds_7.png");
-		this.eightDiamonds = new Image("_images/Diamonds_8.png");
-		this.nineDiamonds = new Image("_images/Diamonds_9.png");
-		this.tenDiamonds = new Image("_images/Diamonds_10.png");
-		this.jackDiamonds = new Image("_images/Diamonds_Jack.png");
-		this.queenDiamonds = new Image("_images/Diamonds_Queen.png");
-		this.kingDiamonds = new Image("_images/Diamonds_King.png");
-		this.aceClubs = new Image("_images/Clubs_Ace.png");
-		this.twoClubs = new Image("_images/Clubs_2.png");
-		this.threeClubs = new Image("_images/Clubs_3.png");
-		this.fourClubs = new Image("_images/Clubs_4.png");
-		this.fiveClubs = new Image("_images/Clubs_5.png");
-		this.sixClubs = new Image("_images/Clubs_6.png");
-		this.sevenClubs = new Image("_images/Clubs_7.png");
-		this.eightClubs = new Image("_images/Clubs_8.png");
-		this.nineClubs = new Image("_images/Clubs_9.png");
-		this.tenClubs = new Image("_images/Clubs_10.png");
-		this.jackClubs = new Image("_images/Clubs_Jack.png");
-		this.queenClubs = new Image("_images/Clubs_Queen.png");
-		this.kingClubs = new Image("_images/Clubs_King.png");
+		this.cardBack = getClass().getResource("Images/Card_Back.png").toExternalForm();
+		this.aceSpades = getClass().getResource("Images/Spades_Ace.png").toExternalForm();
+		this.twoSpades = getClass().getResource("Images/Spades_2.png").toExternalForm();
+		this.threeSpades = getClass().getResource("Images/Spades_3.png").toExternalForm();
+		this.fourSpades = getClass().getResource("Images/Spades_4.png").toExternalForm();
+		this.fiveSpades = getClass().getResource("Images/Spades_5.png").toExternalForm();
+		this.sixSpades = getClass().getResource("Images/Spades_6.png").toExternalForm();
+		this.sevenSpades = getClass().getResource("Images/Spades_7.png").toExternalForm();
+		this.eightSpades = getClass().getResource("Images/Spades_8.png").toExternalForm();
+		this.nineSpades = getClass().getResource("Images/Spades_9.png").toExternalForm();
+		this.tenSpades = getClass().getResource("Images/Spades_10.png").toExternalForm();
+		this.jackSpades = getClass().getResource("Images/Spades_Jack.png").toExternalForm();
+		this.queenSpades = getClass().getResource("Images/Spades_Queen.png").toExternalForm();
+		this.kingSpades = getClass().getResource("Images/Spades_King.png").toExternalForm();
+		this.aceHearts = getClass().getResource("Images/Hearts_Ace.png").toExternalForm();
+		this.twoHearts = getClass().getResource("Images/Hearts_2.png").toExternalForm();
+		this.threeHearts = getClass().getResource("Images/Hearts_3.png").toExternalForm();
+		this.fourHearts = getClass().getResource("Images/Hearts_4.png").toExternalForm();
+		this.fiveHearts = getClass().getResource("Images/Hearts_5.png").toExternalForm();
+		this.sixHearts = getClass().getResource("Images/Hearts_6.png").toExternalForm();
+		this.sevenHearts = getClass().getResource("Images/Hearts_7.png").toExternalForm();
+		this.eightHearts = getClass().getResource("Images/Hearts_8.png").toExternalForm();
+		this.nineHearts = getClass().getResource("Images/Hearts_9.png").toExternalForm();
+		this.tenHearts = getClass().getResource("Images/Hearts_10.png").toExternalForm();
+		this.jackHearts = getClass().getResource("Images/Hearts_Jack.png").toExternalForm();
+		this.queenHearts = getClass().getResource("Images/Hearts_Queen.png").toExternalForm();
+		this.kingHearts = getClass().getResource("Images/Hearts_King.png").toExternalForm();
+		this.aceDiamonds = getClass().getResource("Images/Diamonds_Ace.png").toExternalForm();
+		this.twoDiamonds = getClass().getResource("Images/Diamonds_2.png").toExternalForm();
+		this.threeDiamonds = getClass().getResource("Images/Diamonds_3.png").toExternalForm();
+		this.fourDiamonds = getClass().getResource("Images/Diamonds_4.png").toExternalForm();
+		this.fiveDiamonds = getClass().getResource("Images/Diamonds_5.png").toExternalForm();
+		this.sixDiamonds = getClass().getResource("Images/Diamonds_6.png").toExternalForm();
+		this.sevenDiamonds = getClass().getResource("Images/Diamonds_7.png").toExternalForm();
+		this.eightDiamonds = getClass().getResource("Images/Diamonds_8.png").toExternalForm();
+		this.nineDiamonds = getClass().getResource("Images/Diamonds_9.png").toExternalForm();
+		this.tenDiamonds = getClass().getResource("Images/Diamonds_10.png").toExternalForm();
+		this.jackDiamonds = getClass().getResource("Images/Diamonds_Jack.png").toExternalForm();
+		this.queenDiamonds = getClass().getResource("Images/Diamonds_Queen.png").toExternalForm();
+		this.kingDiamonds = getClass().getResource("Images/Diamonds_King.png").toExternalForm();
+		this.aceClubs = getClass().getResource("Images/Clubs_Ace.png").toExternalForm();
+		this.twoClubs = getClass().getResource("Images/Clubs_2.png").toExternalForm();
+		this.threeClubs = getClass().getResource("Images/Clubs_3.png").toExternalForm();
+		this.fourClubs = getClass().getResource("Images/Clubs_4.png").toExternalForm();
+		this.fiveClubs = getClass().getResource("Images/Clubs_5.png").toExternalForm();
+		this.sixClubs = getClass().getResource("Images/Clubs_6.png").toExternalForm();
+		this.sevenClubs = getClass().getResource("Images/Clubs_7.png").toExternalForm();
+		this.eightClubs = getClass().getResource("Images/Clubs_8.png").toExternalForm();
+		this.nineClubs = getClass().getResource("Images/Clubs_9.png").toExternalForm();
+		this.tenClubs = getClass().getResource("Images/Clubs_10.png").toExternalForm();
+		this.jackClubs = getClass().getResource("Images/Clubs_Jack.png").toExternalForm();
+		this.queenClubs = getClass().getResource("Images/Clubs_Queen.png").toExternalForm();
+		this.kingClubs = getClass().getResource("Images/Clubs_King.png").toExternalForm();
 	}
 }
